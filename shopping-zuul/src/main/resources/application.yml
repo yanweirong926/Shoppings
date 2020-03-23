@@ -1,0 +1,24 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8899
+spring:
+  application:
+    name: shopping-zuul
+  servlet:
+    multipart:
+      max-file-size: 10Mb
+      max-request-size: 100Mb
+zuul:
+  routes:
+    api-a:
+      path: /shopping-manager/**
+      service-id: shopping-manager-ms
+    api-b:
+      path: /shopping-content/**
+      service-id: shopping-content-ms
+    api-c:
+      path: /shopping-search/**
+      service-id: shopping-search-ms
